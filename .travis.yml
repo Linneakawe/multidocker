@@ -20,3 +20,5 @@ after_success:
   - docker push linneakawe/multi-nginx
   - docker push linneakawe/multi-server
   - docker push linneakawe/multi-worker
+
+language: generic
