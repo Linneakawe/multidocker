@@ -6,7 +6,7 @@ before_install:
   - docker build -t linneakawe/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true linneakawe/react-test npm test
+  - docker run linneakawe/react-test npm test -- --coverage
 
 after_success:
   - docker build -t linneakawe/multi-client ./client
@@ -14,7 +14,7 @@ after_success:
   - docker build -t linneakawe/multi-server ./server
   - docker build -t linneakawe/multi-worker ./worker
 # Log in to the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # Take those images and push them to docker hub
   - docker push linneakawe/multi-client
   - docker push linneakawe/multi-nginx
