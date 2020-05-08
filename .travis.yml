@@ -6,7 +6,6 @@ before_install:
   - docker build -t linneakawe/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - run chmod a+x /usr/src/app/node_modules/.bin/react-scripts
   - docker run -e CI=true linneakawe/react-test npm test
 
 after_success:
