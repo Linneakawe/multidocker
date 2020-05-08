@@ -6,7 +6,7 @@ before_install:
   - docker build -t linneakawe/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run linneakawe/react-test npm test -- --coverage
+  - docker run -e CI=true linneakawe/react-test npm test
 
 after_success:
   - docker build -t linneakawe/multi-client ./client
