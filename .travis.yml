@@ -3,13 +3,13 @@ services:
   - docker
 
 before_install:
-  - docker build -t linneakawe/react-test -f ./clienten/Dockerfile.dev ./clienten
+  - docker build -t linneakawe/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true linneakawe/react-test npm test
 
 after_success:
-  - docker build -t linneakawe/multi-client ./clienten
+  - docker build -t linneakawe/multi-client ./client
   - docker build -t linneakawe/multi-nginx ./nginx
   - docker build -t linneakawe/multi-server ./server
   - docker build -t linneakawe/multi-worker ./worker
