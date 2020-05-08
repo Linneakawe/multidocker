@@ -27,10 +27,10 @@ services:
     stdin_open: true
     build:
       dockerfile: Dockerfile.dev
-      context: ./client
+      context: ./clienten
     volumes:
       - /app/node_modules
-      - ./client:/app
+      - ./clienten:/app
   worker:
     build:
       dockerfile: Dockerfile.dev
