@@ -1,0 +1,36 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "linneakawe/multi-client",
+      "hostname": "client",
+      "essential": false,
+    },
+    {
+      "name": "server",
+      "image": "linneakawe/multi-server",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "linneakawe/multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    },
+    {
+      "name": "worker",
+      "image": "linneakawe/multi-worker",
+      "hostname": "worker",
+      "essential": false
+    }
+  ]s
+}
